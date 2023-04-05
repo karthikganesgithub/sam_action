@@ -5,11 +5,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: dev
-      run: |
-        #export SAM_CLI_TELEMETRY=0
-        sam build 
-        sam deploy --config-env dev
+    - name: Echo Hello, World!
+      run: echo "Hello, World! Test"
     
   test:
     runs-on: ubuntu-latest
