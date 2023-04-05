@@ -1,23 +1,20 @@
-name: Deploy SAM Lambda
-
+name: Deploy to Dev Environment
 on:
   push:
-    branches: [ main ]
-
+    branches:
+      - main
 jobs:
   deploy:
+    name: Deploy to Dev
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        env: [ dev, test, prod ]
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Configure AWS credentials
-      env:
-        AWS_PROFILE: ${{ matrix.env }}
-      run: aws configure set region us-west-1
-    - name: Build and deploy SAM application
-      run: |
-        sam build
-        sam deploy --no-confirm-changeset --config-env ${{ matrix.env }}
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Deploy to Dev Environment
+        uses: aws-actions/aws-sam-cli-deploy@v1
+        with:
+          stack-name: sam-app-dev
+          region: us-west-1
+          s3-bucket: sam-app-dev
+          template-file: template.yaml
+          capabilities: CAPABILITY_IAM
