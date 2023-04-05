@@ -15,6 +15,6 @@ jobs:
         with:
           stack-name: sam-app-dev
           region: us-west-1
-          s3-bucket: sam-app-dev
+          s3-bucket: aws-sam-cli-managed-default-samclisourcebucket-1rqnxsr0m1td6
           template-file: template.yaml
           capabilities: CAPABILITY_IAM
