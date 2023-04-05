@@ -21,6 +21,7 @@ jobs:
       - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
   test:
     runs-on: ubuntu-latest
+    needs: [dev]
     steps:
       - uses: actions/checkout@v3
       - uses: aws-actions/setup-sam@v2
