@@ -2,13 +2,18 @@ name: SAM Deploy
 on: [push]
 
 jobs:
-  build:
+  dev:
     runs-on: ubuntu-latest
     steps:
-    - name: Echo Hello, World!
-      run: echo "Hello, World! Test"
-    
-  test:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Install SAM CLI
+      uses: aws-actions/setup-sam-cli@v1
+    - name: Deploy Lambda Function
+      run: |
+        sam build
+      
+  test:   
     runs-on: ubuntu-latest
     needs: [build]
     steps:
@@ -21,3 +26,10 @@ jobs:
     steps:
     - name: Echo Hello, World!
       run: echo "Hello, World!Production"
+      
+
+      uses: actions/checkout@v2
+    - name: Install SAM CLI
+      uses: aws-actions/setup-sam-cli@v1
+    - name: Deploy Lambda Function
+      run: sam deploy --template-file path/to/template.yml --stack-name lambda-stack --capabilities CAPABILITY_IAM --region us-east-1
