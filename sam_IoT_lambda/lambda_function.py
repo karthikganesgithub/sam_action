@@ -37,6 +37,7 @@ def lambda_handler(event, context):
     cursor.execute("""INSERT INTO cpu_util (CPU_Utilization, Time_stamp) VALUES (%s, '%s')""" % (event['CPU Usage'], event['Timestamp']))
     connection.commit()
     connection.close()
+    print("Successfully Completed")
     return {
         'statusCode': 200
     }  
