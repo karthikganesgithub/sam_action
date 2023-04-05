@@ -6,10 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Install SAM CLI
-      uses: aws-actions/setup-sam-cli@v1
-    - name: Deploy Lambda Function
+      uses: aws-actions/setup-sam-cli@v3
+    - name: Run a command
       run: | 
         sam build
       
