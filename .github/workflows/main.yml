@@ -18,7 +18,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-1
       - name: Deploy to Dev
-        uses: aws-actions/aws-sam-cli-deploy@v1
+        # uses: aws-actions/aws-sam-cli-deploy@v1
         with:
           stack-name: sam-app-dev
           s3-bucket: aws-sam-cli-managed-default-samclisourcebucket-1rqnxsr0m1td6/sam-app-dev/
