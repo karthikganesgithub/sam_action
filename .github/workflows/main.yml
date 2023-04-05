@@ -10,8 +10,7 @@ jobs:
     - name: Install SAM CLI
       uses: aws-actions/setup-sam-cli@v1
     - name: Deploy Lambda Function
-      run: |
-        sam build
+      run: sam build
       
   test:   
     runs-on: ubuntu-latest
