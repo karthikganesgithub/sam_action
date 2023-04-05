@@ -17,25 +17,3 @@ jobs:
       uses: aws-actions/aws-sam-cli@v1
       with:
         args: sam build
-      
-      
-  test:   
-    runs-on: ubuntu-latest
-    needs: [dev]
-    steps:
-    - name: Echo Hello, World!
-      run: echo "Hello, World! Test"
-  
-  prod:
-    runs-on: ubuntu-latest
-    needs: [test]
-    steps:
-    - name: Echo Hello, World!
-      run: echo "Hello, World!Production"
-      
-
-      uses: actions/checkout@v2
-    - name: Install SAM CLI
-      uses: aws-actions/setup-sam-cli@v1
-    - name: Deploy Lambda Function
-      run: sam deploy --template-file path/to/template.yml --stack-name lambda-stack --capabilities CAPABILITY_IAM --region us-east-1
