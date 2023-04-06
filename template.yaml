@@ -22,6 +22,10 @@ Resources:
       MemorySize: 128
       Timeout: 10
       Tracing: Active
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - arn:aws:iam::aws:policy/SecretsManagerReadWrite
+        - arn:aws:iam::aws:policy/AWSXrayWriteOnlyAccess
       Environment:
         Variables:
           ENVIRONMENT: !Ref MyEnvironment
