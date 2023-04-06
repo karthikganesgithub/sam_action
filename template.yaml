@@ -24,8 +24,8 @@ Resources:
       Tracing: Active
       Policies:
         - AWSLambdaBasicExecutionRole
-        - arn:aws:iam::aws:policy/SecretsManagerReadWrite
-        - arn:aws:iam::aws:policy/AWSXrayWriteOnlyAccess
+        - SecretsManagerReadWrite
+        - AWSXrayWriteOnlyAccess
       Environment:
         Variables:
           ENVIRONMENT: !Ref MyEnvironment
