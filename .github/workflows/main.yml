@@ -21,7 +21,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: my-artifact
-          path: template.yaml
+          path: .aws-sam/build
   dev:
     runs-on: ubuntu-latest
     needs: [build]
