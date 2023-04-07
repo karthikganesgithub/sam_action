@@ -18,6 +18,8 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-1
       - run: sam build --use-container
+        outputs:
+          app-path: ${{ steps.dev.outputs.app-path }}
       - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
   test:
     runs-on: ubuntu-latest
@@ -35,6 +37,8 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-1
       #- run: sam build --use-container
+        env:
+          app-path: ${{ steps.dev.outputs.app-path }}
       - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --config-env test
   prod:
     runs-on: ubuntu-latest
