@@ -36,6 +36,10 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-1
       #- run: sam build --use-container
+      - uses: actions/download-artifact@v3
+        with:
+          name: my-artifact
+          path: .aws-sam/build
       - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --config-env dev
   test:
     runs-on: ubuntu-latest
