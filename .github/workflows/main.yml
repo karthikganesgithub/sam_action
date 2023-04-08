@@ -22,7 +22,7 @@ jobs:
         id: test 
         with:
           bucket: 'github-artifact-test'
-          path: './README.md'
+          path: ./
           #path: .aws-sam/build
           #name: Upload artifact to S3 bucket
       #- run: aws s3 cp .aws-sam/build s3://github-artifact-test
