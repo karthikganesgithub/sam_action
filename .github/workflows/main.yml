@@ -19,12 +19,9 @@ jobs:
           aws-region: us-west-1
       - run: sam build --use-container
       - uses: actions/upload-artifact@v3
-        id: test 
+        #id: test 
         with:
           name: my-artifact
-          #bucket: 'github-artifact-test'
-          #path: ./
-          #key: 'test1'
           path: .aws-sam/build
       - run: aws s3 cp .aws-sam/build s3://github-artifact-test/my-artifact/ --recursive
 
