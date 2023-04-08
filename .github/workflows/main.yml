@@ -66,6 +66,7 @@ jobs:
         with:
           name: my-artifact
           path: .aws-sam/build
+      - run: aws s3 cp s3://github-artifact-test/my-artifact/ .aws-sam/build --recursive
       - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --config-env test
   
   prod:
@@ -88,5 +89,6 @@ jobs:
         with:
           name: my-artifact
           path: .aws-sam/build
+      - run: aws s3 cp s3://github-artifact-test/my-artifact/ .aws-sam/build --recursive
       - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --config-env prod
 
