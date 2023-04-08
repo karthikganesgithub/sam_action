@@ -26,7 +26,7 @@ jobs:
           #path: ./
           #key: 'test1'
           path: .aws-sam/build
-      - run: aws s3 cp .aws-sam/build s3://github-artifact-test/my-artifact/
+      - run: aws s3 cp .aws-sam/build s3://github-artifact-test/my-artifact/ --recursive
 
   dev:
     runs-on: ubuntu-latest
