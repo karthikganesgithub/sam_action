@@ -23,7 +23,7 @@ jobs:
         with:
           name: my-artifact
           path: .aws-sam/build
-      - run: aws s3 cp .aws-sam/build s3://github-artifact-test/my-artifact/ --recursive
+      - run: aws s3 cp .aws-sam/build s3://github-artifact-test/my-artifact-$(date +%Y-%m-%d_%H-%M-%S)/ --recursive
 
   dev:
     runs-on: ubuntu-latest
