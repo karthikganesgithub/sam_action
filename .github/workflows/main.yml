@@ -48,7 +48,7 @@ jobs:
       #- run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --config-env dev
       #- run: sam deploy --template-file packaged.yaml --stack-name sam-app-dev
       - run: sam package --template-file template.yaml --output-template-file package.yaml --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-1rqnxsr0m1td6 --s3-prefix sam-app-dev
-      - run: sam deploy --template-file package.yaml --stack-name sam-app-dev --capabilities CAPABILITY_IAM
+      - run: sam deploy --template-file package.yaml --no-confirm-changeset --stack-name sam-app-dev --capabilities CAPABILITY_IAM
   
   test:
     runs-on: ubuntu-latest
