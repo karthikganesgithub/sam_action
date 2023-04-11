@@ -38,6 +38,7 @@ def lambda_handler(event, context):
     connection.commit()
     connection.close()
     print("Successfully Completed")
+    print("Artifact Test")
     return {
         'statusCode': 200
     }  
