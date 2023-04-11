@@ -47,8 +47,8 @@ jobs:
       - run: aws s3 cp s3://github-artifact-test/my-artifact/ .aws-sam/build --recursive
       #- run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --config-env dev
       #- run: sam deploy --template-file packaged.yaml --stack-name sam-app-dev
-      - run: sam package --template-file template.yaml --output-template-file package.yaml --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-1rqnxsr0m1td6 --s3-prefix sam-app-dev
-      - run: sam deploy --template-file package.yaml --no-confirm-changeset --stack-name sam-app-dev --capabilities CAPABILITY_IAM --parameter-overrides Environment=dev
+      - run: sam package --template-file .aws-sam/build/template.yaml --output-template-file .aws-sam/build/package.yaml --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-1rqnxsr0m1td6 --s3-prefix sam-app-dev
+      - run: sam deploy --template-file .aws-sam/build/package.yaml --no-confirm-changeset --stack-name sam-app-dev --capabilities CAPABILITY_IAM --parameter-overrides Environment=dev
   
   test:
     runs-on: ubuntu-latest
@@ -72,8 +72,8 @@ jobs:
           path: .aws-sam/build
       - run: aws s3 cp s3://github-artifact-test/my-artifact/ .aws-sam/build --recursive
       #- run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --config-env test
-      - run: sam package --template-file template.yaml --output-template-file package.yaml --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-1rqnxsr0m1td6 --s3-prefix sam-app-test
-      - run: sam deploy --template-file package.yaml --no-confirm-changeset --stack-name sam-app-test --capabilities CAPABILITY_IAM --parameter-overrides Environment=test
+      - run: sam package --template-file .aws-sam/build/template.yaml --output-template-file .aws-sam/build/package.yaml --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-1rqnxsr0m1td6 --s3-prefix sam-app-test
+      - run: sam deploy --template-file .aws-sam/build/package.yaml --no-confirm-changeset --stack-name sam-app-test --capabilities CAPABILITY_IAM --parameter-overrides Environment=test
   
   prod:
     runs-on: ubuntu-latest
