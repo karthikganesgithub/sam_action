@@ -31,7 +31,7 @@ def lambda_handler(event, context):
     username = secrets['username']
     password = secrets['password']
     database = secrets['dbname']
-    # print(database)
+    print(database)
     connection = pymysql.connect(host=endpoint, user=username, passwd=password, db=database)
     cursor = connection.cursor()
     cursor.execute("""INSERT INTO cpu_util (CPU_Utilization, Time_stamp) VALUES (%s, '%s')""" % (event['CPU Usage'], event['Timestamp']))
