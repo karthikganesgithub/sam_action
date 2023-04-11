@@ -39,7 +39,7 @@ def lambda_handler(event, context):
     connection.close()
     print("Successfully Completed")
     #print("Artifact Test")
-    print("new deploy")
+    #print("new deploy")
     return {
         'statusCode': 200
     }  
