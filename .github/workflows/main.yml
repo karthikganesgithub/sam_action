@@ -23,8 +23,8 @@ jobs:
         with:
           name: my-artifact
           path: .aws-sam/build
-      - run: sam package --template-file template.yaml --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-1rqnxsr0m1td6 --s3-prefix sam-app-dev --output-template-file packaged.yaml
-      #- run: aws s3 cp .aws-sam/build s3://github-artifact-test/my-artifact-$BUILD_NUMBER/ --recursive
+      - run: sam package --template-file .aws-sam/build/template.yaml --output-template-file .aws-sam/build/package.yaml --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-1rqnxsr0m1td6
+      - run: aws s3 cp .aws-sam/build s3://github-artifact-test/my-artifact --recursive
 
   dev:
     runs-on: ubuntu-latest
@@ -45,7 +45,9 @@ jobs:
           name: my-artifact
           path: .aws-sam/build
       - run: aws s3 cp s3://github-artifact-test/my-artifact/ .aws-sam/build --recursive
-      - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --config-env dev
+      #- run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --config-env dev
+      #- run: sam deploy --template-file packaged.yaml --stack-name sam-app-dev
+      - run: sam deploy --template-file package.yaml --stack-name sam-app-dev --capabilities CAPABILITY_IAM
   
   test:
     runs-on: ubuntu-latest
