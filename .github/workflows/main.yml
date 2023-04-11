@@ -23,7 +23,7 @@ jobs:
         with:
           name: my-artifact
           path: .aws-sam/build
-      - run: sam package --template-file template.yaml --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-1rqnxsr0m1td6 --s3-prefix sam-app-dev
+      - run: sam package --template-file template.yaml --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-1rqnxsr0m1td6 --s3-prefix sam-app-dev --output-template-file packaged.yaml
       #- run: aws s3 cp .aws-sam/build s3://github-artifact-test/my-artifact-$BUILD_NUMBER/ --recursive
 
   dev:
