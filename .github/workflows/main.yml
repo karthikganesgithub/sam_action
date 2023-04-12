@@ -43,7 +43,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: my-artifact
-          path: .aws-sam/build
+          path: ./
       - run: aws s3 cp s3://github-artifact-test/my-artifact/ .aws-sam/build --recursive
       #- run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --config-env dev
       #- run: sam deploy --template-file packaged.yaml --stack-name sam-app-dev
