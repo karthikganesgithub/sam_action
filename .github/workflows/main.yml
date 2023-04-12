@@ -73,7 +73,7 @@ jobs:
           path: .aws-sam/build
       - run: aws s3 cp s3://github-artifact-test/my-artifact/ .aws-sam/build --recursive
       #- run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --config-env test
-      - run: sam package --template-file .aws-sam/build/template.yaml --output-template-file .aws-sam/build/package.yaml --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-1rqnxsr0m1td6 --s3-prefix sam-app-test
+      #- run: sam package --template-file .aws-sam/build/template.yaml --output-template-file .aws-sam/build/package.yaml --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-1rqnxsr0m1td6 --s3-prefix sam-app-test
       - run: sam deploy --template-file .aws-sam/build/package.yaml --no-confirm-changeset --stack-name sam-app-test --capabilities CAPABILITY_IAM --parameter-overrides Environment=test
   
   prod:
@@ -98,6 +98,6 @@ jobs:
           path: .aws-sam/build
       - run: aws s3 cp s3://github-artifact-test/my-artifact/ .aws-sam/build --recursive
       #- run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --config-env prod
-      - run: sam package --template-file .aws-sam/build/template.yaml --output-template-file .aws-sam/build/package.yaml --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-1rqnxsr0m1td6 --s3-prefix sam-app-prod
+      #- run: sam package --template-file .aws-sam/build/template.yaml --output-template-file .aws-sam/build/package.yaml --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-1rqnxsr0m1td6 --s3-prefix sam-app-prod
       - run: sam deploy --template-file .aws-sam/build/package.yaml --no-confirm-changeset --stack-name sam-app-prod --capabilities CAPABILITY_IAM --parameter-overrides Environment=prod
 
