@@ -24,7 +24,7 @@ jobs:
           name: my-artifact
           path: .aws-sam/build
       #- run: sam package --template-file .aws-sam/build/template.yaml --output-template-file .aws-sam/build/package.yaml --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-1rqnxsr0m1td6
-      - run: sam package --template-file .aws-sam/build/template.yaml --output-template-file .aws-sam/build/package.yaml --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-1rqnxsr0m1td6
+      - run: sam package --template-file template.yaml --output-template-file package.yaml --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-1rqnxsr0m1td6
       - run: aws s3 cp .aws-sam/build s3://github-artifact-test/my-artifact --recursive
 
   dev:
@@ -44,7 +44,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: my-artifact
-          path: ./
+          path: .aws-sam/build
       - run: aws s3 cp s3://github-artifact-test/my-artifact/ .aws-sam/build --recursive
       #- run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --config-env dev
       #- run: sam deploy --template-file packaged.yaml --stack-name sam-app-dev
