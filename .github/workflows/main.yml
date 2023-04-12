@@ -49,7 +49,7 @@ jobs:
       #- run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --config-env dev
       #- run: sam deploy --template-file packaged.yaml --stack-name sam-app-dev
       #- run: sam package --template-file .aws-sam/build/template.yaml --output-template-file .aws-sam/build/package.yaml --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-1rqnxsr0m1td6 --s3-prefix sam-app-dev
-      - run: sam deploy --template-file package.yaml --no-confirm-changeset --stack-name sam-app-dev --capabilities CAPABILITY_IAM --parameter-overrides Environment=dev
+      - run: sam deploy --template-file .aws-sam/build/package.yaml --no-confirm-changeset --stack-name sam-app-dev --capabilities CAPABILITY_IAM --parameter-overrides Environment=dev
   
   test:
     runs-on: ubuntu-latest
